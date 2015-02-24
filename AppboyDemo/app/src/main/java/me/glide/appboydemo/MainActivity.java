@@ -20,14 +20,9 @@ public class MainActivity extends ActionBarActivity implements IEventSubscriber<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
+        Appboy.getInstance(this).openSession(this);
+        Appboy.getInstance(this).subscribeToFeedUpdates(this);
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if(Appboy.getInstance(this).openSession(this)) {
-            Appboy.getInstance(this).requestFeedRefresh();
-        }
     }
 
     @Override
